@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>PoseNet Webcam</title>
+    <style>
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f0f0f0; /* Light grey background */
+        font-family: Arial, sans-serif;
+        color: #333;
+      }
+      canvas {
+        border: 2px solid #333; /* Border around the canvas */
+        border-radius: 8px; /* Slightly rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+        width: 300px; /* Set the desired width */
+        height: 500px; /* Set the desired height */
+      }
+      h1 {
+        position: absolute;
+        top: 40px;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Moustache AR</h1>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.5/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ml5@0.6.0/dist/ml5.min.js"></script>
+    <script src="sketch_mooch.js"></script>
+  </body>
+</html>

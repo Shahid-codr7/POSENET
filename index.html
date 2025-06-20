@@ -1,0 +1,397 @@
+<html lang="en">
+  <head>
+    <script
+      type="text/javascript"
+      src="/___vscode_livepreview_injected_script"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StickerCam AR</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* General Body & Typography */
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: #f7f9fc; /* Light background for a fresh feel */
+        color: #333;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Playfair Display", serif; /* For a touch of elegance */
+        color: #2c3e50;
+        margin-bottom: 15px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #007bff;
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        color: #0056b3;
+      }
+
+      /* Header & Navigation */
+      header {
+        background-color: #ffffff;
+        padding: 20px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8em;
+        font-weight: 700;
+        color: #007bff;
+      }
+
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      nav ul li {
+        margin-left: 30px;
+      }
+
+      nav ul li a {
+        color: #555;
+        font-weight: 600;
+        position: relative;
+        padding-bottom: 5px; /* For the underline effect */
+      }
+
+      nav ul li a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #007bff;
+        transition: width 0.3s ease;
+      }
+
+      nav ul li a:hover::after {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 1200px;
+        margin: 60px auto;
+        padding: 0 20px;
+        gap: 40px;
+        flex-wrap: wrap; /* Allows wrapping on smaller screens */
+      }
+
+      .hero-content {
+        flex: 1;
+        min-width: 300px; /* Ensures content doesn't get too squeezed */
+        text-align: left;
+      }
+
+      .hero-content h1 {
+        font-size: 3.2em;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        color: #2c3e50;
+      }
+
+      .hero-content p {
+        font-size: 1.2em;
+        color: #666;
+        margin-bottom: 30px;
+      }
+
+      .hero-image {
+        flex: 1;
+        min-width: 300px; /* Ensures image doesn't get too squeezed */
+        text-align: center;
+      }
+
+      .hero-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Launch Buttons */
+      .launch-buttons {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 15px 30px;
+        border-radius: 5px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease,
+          box-shadow 0.3s ease;
+        border: none;
+        font-size: 1em;
+      }
+
+      .primary-btn {
+        background-color: #007bff;
+        color: #fff;
+        box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+      }
+
+      .primary-btn:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 123, 255, 0.4);
+      }
+
+      .secondary-btn {
+        background-color: #6c757d;
+        color: #fff;
+        box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+      }
+
+      .secondary-btn:hover {
+        background-color: #5a6268;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(108, 117, 125, 0.4);
+      }
+
+      /* Sections (Features, About, Contact) */
+      section {
+        padding: 80px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      section:nth-child(even) {
+        background-color: #eef3f8; /* Alternating background for visual separation */
+      }
+
+      section h2 {
+        font-size: 2.5em;
+        margin-bottom: 40px;
+      }
+
+      /* Features Grid */
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .feature-item {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .feature-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      }
+
+      .feature-item h3 {
+        color: #007bff;
+        margin-bottom: 10px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #2c3e50;
+        color: #fff;
+        text-align: center;
+        padding: 30px 20px;
+        margin-top: 50px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        nav ul {
+          margin-top: 15px;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        nav ul li {
+          margin: 10px 0;
+        }
+
+        .hero {
+          flex-direction: column-reverse; /* Image above content on mobile */
+          text-align: center;
+        }
+
+        .hero-content {
+          text-align: center;
+          margin-top: 30px;
+        }
+
+        .hero-content h1 {
+          font-size: 2.5em;
+        }
+
+        .launch-buttons {
+          justify-content: center;
+        }
+
+        section {
+          padding: 60px 20px;
+        }
+
+        section h2 {
+          font-size: 2em;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-content h1 {
+          font-size: 2em;
+        }
+
+        .btn {
+          width: 80%;
+          margin-bottom: 15px;
+        }
+
+        .launch-buttons {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body data-new-gr-c-s-check-loaded="14.1240.0" data-gr-ext-installed="">
+    <header>
+      <nav>
+        <div class="logo">StickerCam AR</div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Your Reality, Reimagined with Stickers !</h1>
+          <p>
+            Transform your reality with fun, interactive stickers. Express
+            yourself like never before.
+          </p>
+          <div class="launch-buttons">
+            <a id="gogglesBtn" class="btn primary-btn" href="index_spec.html"
+              >Launch Goggles AR</a
+            >
+
+            <a
+              id="moustacheBtn"
+              class="btn secondary-btn"
+              href="index_mooch.html"
+              >Launch Moustache AR</a
+            >
+          </div>
+        </div>
+        <div class="hero-image">
+          <img
+            src="images/emoji.png"
+            width="200px"
+            alt="AR Experience Example"
+          />
+        </div>
+      </section>
+
+      <section id="features" class="features">
+        <h2>Implementation Details</h2>
+        <div class="feature-grid">
+          <div class="feature-item">
+            <h3>P5.js</h3>
+            <p>
+              To display PoseNet's keypoints (nose, eyes, and skeleton points)
+              as dots in P5.js, you get the `x` and `y` coordinates for each
+              detected keypoint. Then, using P5.js's `circle()` or `ellipse()`
+              functions, you draw a dot at those coordinates, customizing its
+              appearance with `fill()` and `stroke()` if desired.
+            </p>
+          </div>
+          <div class="feature-item">
+            <h3>PoseNet.js</h3>
+            <p>
+              PoseNet.js is a browser-based machine learning model (built on top
+              of TensorFlow.js) that performs real-time human pose estimation.
+              It detects and tracks 17 key body joints in images or videos,
+              enabling interactive applications that respond to human movement
+              without sending data to a server.
+            </p>
+          </div>
+          <div class="feature-item">
+            <h3>ml5.js</h3>
+            <p>
+              ml5.js is an open-source JavaScript library that makes machine
+              learning accessible for web creatives. Built on TensorFlow.js, it
+              simplifies integrating ML models (like image classification, pose
+              estimation, and text generation) directly into browsers.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 StickerCam AR. All rights reserved.</p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const gogglesBtn = document.getElementById("gogglesBtn");
+        const moustacheBtn = document.getElementById("moustacheBtn");
+
+        gogglesBtn.addEventListener("click", function () {
+          window.location.href = "goggles-ar.html"; // Path to your Goggles AR page
+        });
+
+        moustacheBtn.addEventListener("click", function () {
+          window.location.href = "moustache-ar.html"; // Path to your Moustache AR page
+        });
+      });
+    </script>
+  </body>
+  <grammarly-desktop-integration
+    data-grammarly-shadow-root="true"
+  ></grammarly-desktop-integration>
+</html>
